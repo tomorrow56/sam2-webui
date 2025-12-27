@@ -26,7 +26,7 @@ SAM 2（Segment Anything Model 2）を使用したインタラクティブな画
 ### 1. リポジトリをクローン
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/sam2-webui.git
+git clone https://github.com/tomorrow56/sam2-webui.git
 cd sam2-webui
 ```
 
