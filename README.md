@@ -109,6 +109,44 @@ sam2-webui/
 | sam2.1_hiera_base_plus | ~300MB | バランス型 |
 | sam2.1_hiera_large | ~800MB | 高精度 |
 
+### モデルの変更方法
+
+使用するモデルを変更するには、`sam2_webui.py` の以下の部分を修正します：
+
+```python
+# sam2_webui.py の 126行目付近
+def download_model():
+    model_name = "sam2.1_hiera_small.pt"  # ←ここを変更
+    model_path = f"checkpoints/{model_name}"
+    
+    # ...（中略）...
+    
+    # sam2_webui.py の 148行目付近
+    sam2_model = build_sam2("configs/sam2.1/sam2.1_hiera_s.yaml", model_path, device=device)  # ←ここも変更
+```
+
+#### 設定例：
+
+**smallモデル（デフォルト）**
+```python
+model_name = "sam2.1_hiera_small.pt"
+sam2_model = build_sam2("configs/sam2.1/sam2.1_hiera_s.yaml", model_path, device=device)
+```
+
+**base_plusモデル**
+```python
+model_name = "sam2.1_hiera_base_plus.pt"
+sam2_model = build_sam2("configs/sam2.1/sam2.1_hiera_b+.yaml", model_path, device=device)
+```
+
+**largeモデル**
+```python
+model_name = "sam2.1_hiera_large.pt"
+sam2_model = build_sam2("configs/sam2.1/sam2.1_hiera_l.yaml", model_path, device=device)
+```
+
+変更後、アプリを再起動すると新しいモデルがダウンロードされます。
+
 ## 依存関係
 
 - streamlit >= 1.28.0

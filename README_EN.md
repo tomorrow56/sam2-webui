@@ -108,6 +108,44 @@ The following models will be automatically downloaded on first launch:
 | sam2.1_hiera_base_plus | ~300MB | Balanced |
 | sam2.1_hiera_large | ~800MB | High precision |
 
+### How to Change Models
+
+To change the model being used, modify the following parts in `sam2_webui.py`:
+
+```python
+# Around line 126 in sam2_webui.py
+def download_model():
+    model_name = "sam2.1_hiera_small.pt"  # ← Change this
+    model_path = f"checkpoints/{model_name}"
+    
+    # ... (omitted) ...
+    
+    # Around line 148 in sam2_webui.py
+    sam2_model = build_sam2("configs/sam2.1/sam2.1_hiera_s.yaml", model_path, device=device)  # ← Also change this
+```
+
+#### Configuration Examples:
+
+**Small model (default)**
+```python
+model_name = "sam2.1_hiera_small.pt"
+sam2_model = build_sam2("configs/sam2.1/sam2.1_hiera_s.yaml", model_path, device=device)
+```
+
+**Base_plus model**
+```python
+model_name = "sam2.1_hiera_base_plus.pt"
+sam2_model = build_sam2("configs/sam2.1/sam2.1_hiera_b+.yaml", model_path, device=device)
+```
+
+**Large model**
+```python
+model_name = "sam2.1_hiera_large.pt"
+sam2_model = build_sam2("configs/sam2.1/sam2.1_hiera_l.yaml", model_path, device=device)
+```
+
+After making changes, restart the application and the new model will be downloaded.
+
 ## Dependencies
 
 - streamlit >= 1.28.0
