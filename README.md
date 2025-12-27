@@ -14,6 +14,7 @@ SAM 2（Segment Anything Model 2）を使用したインタラクティブな画
 - **境界検出モード**: 3段階（狭い/標準/広い）で境界の精度を調整
 - **境界スムージング**: ガウシアンブラー、モルフォロジー処理で滑らかな境界を実現
 - **カスタム閾値**: 詳細な閾値調整が可能
+- **多言語対応**: 日本語と英語のUI切り替えに対応
 
 ## スクリーンショット
 
@@ -82,11 +83,14 @@ streamlit run app_click_final.py --server.headless true
 
 ```
 sam2-webui/
-├── app_click_final.py    # メインアプリケーション（推奨）
-├── app.py                # 基本版アプリケーション
+├── app_click_final.py    # メインアプリケーション
 ├── requirements.txt      # 依存関係
-├── checkpoints/          # モデルファイル（自動ダウンロード）
-└── README.md
+├── translations.py       # 多言語対応（日本語/英語）
+├── README.md            # 日本語ドキュメント
+├── README_EN.md         # 英語ドキュメント
+├── LICENSE              # MITライセンス
+├── checkpoints/         # モデルファイル（自動ダウンロード）
+└── img/                 # 画像ファイル（スクリーンショット等）
 ```
 
 ## システム要件

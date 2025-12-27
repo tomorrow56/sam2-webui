@@ -82,11 +82,14 @@ streamlit run app_click_final.py --server.headless true
 
 ```
 sam2-webui/
-├── app_click_final.py    # Main application (recommended)
-├── app.py                # Basic version application
+├── app_click_final.py    # Main application
 ├── requirements.txt      # Dependencies
-├── checkpoints/          # Model files (auto-download)
-└── README.md
+├── translations.py       # Multilingual support (Japanese/English)
+├── README.md            # Japanese documentation
+├── README_EN.md         # English documentation
+├── LICENSE              # MIT License
+├── checkpoints/         # Model files (auto-download)
+└── img/                 # Image files (screenshots, etc.)
 ```
 
 ## System Requirements
