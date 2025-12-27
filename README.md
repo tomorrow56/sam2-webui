@@ -50,8 +50,10 @@ pip install -r requirements.txt
 ### 4. アプリケーションを起動
 
 ```bash
-streamlit run app_click_final.py
+streamlit run app_click_final.py --server.headless true
 ```
+
+> **注意**: 初回起動時にメールアドレスの入力を求められる場合がありますが、Enterキーを押してスキップできます。`--server.headless true` オプションを使用すると、この質問を回避できます。
 
 ## 使用方法
 
