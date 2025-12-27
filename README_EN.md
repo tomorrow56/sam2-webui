@@ -1,0 +1,134 @@
+# SAM 2 Web UI
+
+An interactive web application for image segmentation using SAM 2 (Segment Anything Model 2).
+
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+## Features
+
+- **Interactive Segmentation**: Click on images to instantly run segmentation
+- **Multiple Results Display**: Shows the best result and other candidates simultaneously
+- **Cutout Image Download**: Download segmentation results as transparent PNG files
+- **Boundary Detection Modes**: 3-level (Narrow/Standard/Wide) adjustment for boundary precision
+- **Boundary Smoothing**: Gaussian blur and morphological processing for smoother boundaries
+- **Custom Threshold**: Detailed threshold adjustment available
+
+## Screenshots
+
+![Screenshot](img/screenshot.png)
+
+The application features a 2-column layout:
+- **Left**: Click on images to specify coordinates
+- **Right**: Display segmentation results and cutout images
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/tomorrow56/sam2-webui.git
+cd sam2-webui
+```
+
+### 2. Create virtual environment (recommended)
+
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or
+venv\Scripts\activate  # Windows
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Launch the application
+
+```bash
+streamlit run app_click_final.py --server.headless true
+```
+
+> **Note**: You may be prompted for an email address on first launch. Press Enter to skip. Use the `--server.headless true` option to avoid this prompt.
+
+## Usage
+
+1. Access `http://localhost:8501` in your browser
+2. Upload an image from the sidebar (JPG, PNG, BMP supported)
+3. Click on the image in the left panel to run segmentation
+4. Results will be displayed on the right
+5. Use the "Download Cutout Image" button to save results
+
+### Sidebar Settings
+
+#### 🎚️ Segmentation Adjustment
+- **Narrow (Precise)**: Detect object boundaries precisely
+- **Standard**: Standard boundary detection
+- **Wide (Rough)**: Detect objects more broadly
+
+#### 🔧 Detailed Settings
+- **Custom Threshold**: Fine-tune from -2.0 to 2.0
+
+#### ✨ Boundary Smoothing
+- **Gaussian Blur**: Blur mask boundaries for smoothness
+- **Morphology (Open/Close)**: Remove small noise and fill holes
+- **Both**: Apply both processes (smoothest)
+
+## File Structure
+
+```
+sam2-webui/
+├── app_click_final.py    # Main application (recommended)
+├── app.py                # Basic version application
+├── requirements.txt      # Dependencies
+├── checkpoints/          # Model files (auto-download)
+└── README.md
+```
+
+## System Requirements
+
+- **Python**: 3.8 or higher
+- **GPU**: CUDA-compatible GPU (recommended) or CPU
+- **RAM**: 8GB or more (16GB+ recommended for Large model)
+
+## Models
+
+The following models will be automatically downloaded on first launch:
+
+| Model | Size | Features |
+|--------|--------|------|
+| sam2.1_hiera_small | ~150MB | Fast, lightweight |
+| sam2.1_hiera_base_plus | ~300MB | Balanced |
+| sam2.1_hiera_large | ~800MB | High precision |
+
+## Dependencies
+
+- streamlit >= 1.28.0
+- torch >= 2.0.0
+- torchvision >= 0.15.0
+- opencv-python >= 4.8.0
+- numpy >= 1.24.0
+- pillow >= 10.0.0
+- matplotlib >= 3.7.0
+- plotly >= 5.0.0
+- streamlit-plotly-events >= 0.0.6
+- [SAM 2](https://github.com/facebookresearch/sam2)
+
+## Notes
+
+- Models will be downloaded on first launch (may take several minutes)
+- GPU environment provides faster performance
+- Large images may take longer to process
+
+## License
+
+MIT License
+
+## Acknowledgments
+
+- [Segment Anything Model 2 (SAM 2)](https://github.com/facebookresearch/sam2) - Meta AI Research
+- [Streamlit](https://streamlit.io/) - Web UI framework
