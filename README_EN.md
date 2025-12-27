@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ### 4. Launch the application
 
 ```bash
-streamlit run app_click_final.py --server.headless true
+streamlit run sam2_webui.py --server.headless true
 ```
 
 > **Note**: You may be prompted for an email address on first launch. Press Enter to skip. Use the `--server.headless true` option to avoid this prompt.
@@ -82,7 +82,7 @@ streamlit run app_click_final.py --server.headless true
 
 ```
 sam2-webui/
-├── app_click_final.py    # Main application
+├── sam2_webui.py         # Main application
 ├── requirements.txt      # Dependencies
 ├── translations.py       # Multilingual support (Japanese/English)
 ├── README.md            # Japanese documentation
